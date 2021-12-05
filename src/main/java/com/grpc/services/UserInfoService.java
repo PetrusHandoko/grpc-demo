@@ -20,19 +20,18 @@ public class UserInfoService {
 
     @RequestMapping(value = "/userinfo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
     public UserInfo getUser(@RequestParam("id") int id ){
-        UserInfo uinfo = new UserInfo("p","h","p@g"+id );
+        UserInfo uinfo = new UserInfo();
         return uinfo;
     }
 
     @GetMapping("/test/{id}")
     public UserInfo getTest (@PathVariable(name = "id") int id ){
-        UserInfo uinfo = new UserInfo("p","h","p@g"+id );
+        UserInfo uinfo = new UserInfo( );
         return  uinfo;
     }
 
     @PostMapping(value = "/userinfo",consumes = MediaType.APPLICATION_JSON)
     public UserInfo updateUserInfo(@RequestBody() UserInfo uinfo){
-
-        return uinfo ;
+        return grpcServ.sendMessage(uinfo);
     }
 }

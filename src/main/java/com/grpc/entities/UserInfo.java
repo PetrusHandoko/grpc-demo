@@ -1,18 +1,19 @@
 package com.grpc.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserInfo {
 
     private String lastName;
     private String firstName;
     private String email;
+    private String dateOfBirth;
 
-    public UserInfo(String last, String first, String mail) {
-        lastName = last;
-        firstName = first;
-        email =mail;
-    }
+    private String creationDate;
 }
