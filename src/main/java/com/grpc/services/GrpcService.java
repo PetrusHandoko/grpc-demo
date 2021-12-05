@@ -7,7 +7,9 @@ import com.grpc.lib.UserServiceGrpc;
 import io.grpc.StatusRuntimeException;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.client.inject.GrpcClient;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @Slf4j
@@ -35,7 +37,7 @@ public class GrpcService {
             return updatedInfo;
         } catch (final StatusRuntimeException e) {
             log.error("Request failed", e);
-            return new UserInfo();
+            throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Service not available\n");
         }
     }
 
