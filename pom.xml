@@ -30,6 +30,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -43,19 +47,10 @@
 			<version>1.18.22</version>
 			<scope>provided</scope>
 		</dependency>
-
-
-		<dependency>
-			<groupId>com.grpc</groupId>
-			<artifactId>grpc</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.grpc/protoc-gen-grpc-java -->
 		<dependency>
 			<groupId>io.grpc</groupId>
-			<artifactId>protoc-gen-grpc-java</artifactId>
+			<artifactId>grpc-stub</artifactId>
 			<version>1.42.1</version>
-			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>groupId</groupId>
@@ -69,9 +64,9 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>io.grpc</groupId>
-				<artifactId>protoc-gen-grpc-java</artifactId>
-				<version>1.42.1</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.1.5.RELEASE</version>
 			</plugin>
 		</plugins>
 	</build>

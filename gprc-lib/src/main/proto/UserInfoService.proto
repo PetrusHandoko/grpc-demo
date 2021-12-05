@@ -5,7 +5,7 @@ option java_package = "com.grpc.lib";
 option java_outer_classname = "UserInfoStub";
 
 // The user info service definition.
-service Simple {
+service UserService {
     // Sends a update
     rpc SendUpdate (UserInfoUpdateRequest) returns (UserInfoUpdateResponse) {
     }

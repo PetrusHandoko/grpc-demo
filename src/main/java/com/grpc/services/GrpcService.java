@@ -1,7 +1,6 @@
 package com.grpc.services;
 
 import com.grpc.entities.UserInfo;
-import com.grpc.lib.UserInfoStub;
 import com.grpc.lib.UserInfoUpdateRequest;
 import com.grpc.lib.UserInfoUpdateResponse;
 import com.grpc.lib.UserServiceGrpc;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class GrpcService {
 
-    @GrpcClient("cloud-grpc-server")
+    @GrpcClient("localhost")
     private UserServiceGrpc.UserServiceBlockingStub UserServiceStub;
 
     public UserInfo sendMessage(final UserInfo userInfo) {
