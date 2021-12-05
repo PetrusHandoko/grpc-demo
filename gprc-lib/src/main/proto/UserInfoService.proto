@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.grpc.lib";
+option java_outer_classname = "UserInfoStub";
+
+// The user info service definition.
+service Simple {
+    // Sends a update
+    rpc SendUpdate (UserInfoUpdateRequest) returns (UserInfoUpdateResponse) {
+    }
+}
+
+// The request message containing the user's name.
+message UserInfoUpdateRequest {
+    string firstname = 1;
+    string lastname = 2;
+    string email = 3;
+    string dob = 4;
+}
+
+// The response message containing userinfo with timestamp
+message UserInfoUpdateResponse {
+    string firstname = 1;
+    string lastname = 2;
+    string email = 3;
+    string dob = 4;
+    string lastupdate = 5;
+}
