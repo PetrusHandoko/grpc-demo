@@ -17,6 +17,7 @@ message UserInfoUpdateRequest {
     string lastname = 2;
     string email = 3;
     string dob = 4;
+    string timestamp = 5;
 }
 
 // The response message containing userinfo with timestamp
@@ -25,5 +26,5 @@ message UserInfoUpdateResponse {
     string lastname = 2;
     string email = 3;
     string dob = 4;
-    string lastupdate = 5;
+    string timestamp = 5;
 }

@@ -15,5 +15,5 @@ public class UserInfo {
     private String email;
     private String dateOfBirth;
 
-    private String creationDate;
+    private String timeStamp;
 }

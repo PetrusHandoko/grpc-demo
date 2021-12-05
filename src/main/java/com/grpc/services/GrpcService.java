@@ -1,5 +1,6 @@
 package com.grpc.services;
 
+import com.google.type.DateTime;
 import com.grpc.entities.UserInfo;
 import com.grpc.lib.UserInfoUpdateRequest;
 import com.grpc.lib.UserInfoUpdateResponse;
@@ -10,6 +11,10 @@ import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 @Service
 @Slf4j
@@ -26,18 +31,27 @@ public class GrpcService {
                     .setLastname(userInfo.getLastName())
                     .setDob(userInfo.getDateOfBirth())
                     .setEmail(userInfo.getEmail())
+                    .setTimestamp( Timestamp.from(Instant.now()).toString() )
                     .build());
             UserInfo updatedInfo = new UserInfo();
             updatedInfo.setFirstName(response.getFirstname());
             updatedInfo.setLastName(response.getLastname());
             updatedInfo.setEmail(response.getEmail());
-            updatedInfo.setCreationDate(response.getLastupdate());
-            updatedInfo.setCreationDate(response.getLastupdate());
+            updatedInfo.setDateOfBirth(response.getDob());
+            updatedInfo.setTimeStamp(response.getTimestamp());
 
             return updatedInfo;
         } catch (final StatusRuntimeException e) {
             log.error("Request failed", e);
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Service not available\n");
+            /*UserInfo updatedInfo = new UserInfo();
+            updatedInfo.setFirstName("Petrus");
+            updatedInfo.setLastName("Handoko");
+            updatedInfo.setEmail("Petrus@h.com");
+            updatedInfo.setDateOfBirth("2");
+            updatedInfo.setTimeStamp(Timestamp.from(Instant.now()).toString() );
+            return updatedInfo ;
+            */
         }
     }
 
