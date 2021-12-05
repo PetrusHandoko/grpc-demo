@@ -20,7 +20,7 @@ import java.time.Instant;
 @Slf4j
 public class GrpcService {
 
-    @GrpcClient("localhost")
+    @GrpcClient("userServiceServer")
     private UserServiceGrpc.UserServiceBlockingStub UserServiceStub;
 
     public UserInfo sendMessage(final UserInfo userInfo) {
