@@ -41,14 +41,6 @@ public class GrpcService {
         } catch (final StatusRuntimeException e) {
             log.error("Request failed", e);
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Service not available\n");
-            /*UserInfo updatedInfo = new UserInfo();
-            updatedInfo.setFirstName("Petrus");
-            updatedInfo.setLastName("Handoko");
-            updatedInfo.setEmail("Petrus@h.com");
-            updatedInfo.setDateOfBirth("2");
-            updatedInfo.setTimeStamp(Timestamp.from(Instant.now()).toString() );
-            return updatedInfo ;
-            */
         }
     }
 

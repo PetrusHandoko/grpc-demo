@@ -24,12 +24,6 @@ public class UserInfoService {
         return uinfo;
     }
 
-    @GetMapping("/test/{id}")
-    public UserInfo getTest (@PathVariable(name = "id") int id ){
-        UserInfo uinfo = new UserInfo( );
-        return  uinfo;
-    }
-
     @PostMapping(value = "/userinfo",consumes = MediaType.APPLICATION_JSON)
     public UserInfo updateUserInfo(@RequestBody() UserInfo uinfo){
         return grpcServ.sendMessage(uinfo);
