@@ -25,22 +25,19 @@ public class GrpcService {
 
     public UserInfo sendMessage(final UserInfo userInfo) {
         try {
+            String current = Timestamp.from(Instant.now()).toString();
             final UserInfoUpdateResponse response  = this.UserServiceStub.sendUpdate(UserInfoUpdateRequest.newBuilder()
                     .getDefaultInstanceForType().newBuilder()
                     .setFirstname(userInfo.getFirstName())
                     .setLastname(userInfo.getLastName())
                     .setDob(userInfo.getDateOfBirth())
                     .setEmail(userInfo.getEmail())
-                    .setTimestamp( Timestamp.from(Instant.now()).toString() )
+                    .setTimestamp( current )
                     .build());
-            UserInfo updatedInfo = new UserInfo();
-            updatedInfo.setFirstName(response.getFirstname());
-            updatedInfo.setLastName(response.getLastname());
-            updatedInfo.setEmail(response.getEmail());
-            updatedInfo.setDateOfBirth(response.getDob());
-            updatedInfo.setTimeStamp(response.getTimestamp());
-
-            return updatedInfo;
+            String timestamp = response.getTimestamp();
+            String status = response.getStatus();
+            userInfo.setTimeStamp(timestamp);
+            return userInfo;
         } catch (final StatusRuntimeException e) {
             log.error("Request failed", e);
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Service not available\n");
