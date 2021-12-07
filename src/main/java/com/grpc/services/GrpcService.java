@@ -26,13 +26,13 @@ public class GrpcService {
     public UserInfo sendMessage(final UserInfo userInfo) {
         try {
             String current = Timestamp.from(Instant.now()).toString();
-            final UserInfoUpdateResponse response  = this.UserServiceStub.sendUpdate(UserInfoUpdateRequest.newBuilder()
+            final UserInfoUpdateResponse response = this.UserServiceStub.sendUpdate(UserInfoUpdateRequest.newBuilder()
                     .getDefaultInstanceForType().newBuilder()
                     .setFirstname(userInfo.getFirstName())
                     .setLastname(userInfo.getLastName())
                     .setDob(userInfo.getDateOfBirth())
                     .setEmail(userInfo.getEmail())
-                    .setTimestamp( current )
+                    .setTimestamp(current)
                     .build());
             String timestamp = response.getTimestamp();
             String status = response.getStatus();
@@ -42,6 +42,6 @@ public class GrpcService {
             log.error("Request failed", e);
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Service not available\n");
         }
-    }
 
+    }
 }
