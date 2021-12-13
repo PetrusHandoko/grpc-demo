@@ -24,10 +24,12 @@ Note: if booster is not installed:
   `$ apt-get install libboost-all-dev`
 
 Compiled the new helloworld.proto files that store the userservice definition with this command
+
+`
 $ protoc -I ../../protos/ --grpc_out=. --plugin=protoc-gen-grpc=/usr/local/bin/grpc_cpp_plugin ../../protos/helloworld.proto
 $ protoc -I ../../protos/ --cpp_out=. ../../protos/helloworld.proto
 $ make greterserver
-
+`
 
 
 
