@@ -3,14 +3,10 @@ package com.grpc.services;
 
 import com.grpc.entities.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserInfoService {
@@ -18,13 +14,7 @@ public class UserInfoService {
     @Autowired
     private GrpcService grpcServ;
 
-    @RequestMapping(value = "/userinfo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
-    public UserInfo getUser(@RequestParam("id") int id ){
-        UserInfo uinfo = new UserInfo();
-        return uinfo;
-    }
-
-    @PostMapping(value = "/userinfo",consumes = MediaType.APPLICATION_JSON)
+    @PostMapping(value = "/userinfo",consumes =  MediaType.APPLICATION_JSON_VALUE)
     public UserInfo updateUserInfo(@RequestBody() UserInfo uinfo){
         return grpcServ.sendMessage(uinfo);
     }
