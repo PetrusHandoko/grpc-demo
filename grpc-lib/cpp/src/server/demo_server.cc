@@ -30,17 +30,14 @@
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>
 
-#ifdef BAZEL_BUILD
-#include "examples/protos/helloworld.grpc.pb.h"
-#else
-#include "helloworld.grpc.pb.h"
-#endif
+#include "UserInfoService.grpc.pb.h"
+
 
 using grpc::Server;
 using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::Status;
-using grpclib::UserService;
+using grpclib::UserInfoService;
 using grpclib::UserInfoUpdateResponse;
 using grpclib::UserInfoUpdateRequest;
 
@@ -67,7 +64,7 @@ static void init_log()
 }
 
 // Logic and data behind the server's behavior.
-class GreeterServiceImpl final : public UserService::Service {
+class DemoServiceImpl final : public UserInfoService::Service {
 
   void logUserInfo( const UserInfoUpdateRequest * request ) {
 
@@ -106,7 +103,7 @@ class GreeterServiceImpl final : public UserService::Service {
 
 void RunServer() {
   std::string server_address("0.0.0.0:50051");
-  GreeterServiceImpl service;
+  DemoServiceImpl service;
 
   grpc::EnableDefaultHealthCheckService(true);
   grpc::reflection::InitProtoReflectionServerBuilderPlugin();
