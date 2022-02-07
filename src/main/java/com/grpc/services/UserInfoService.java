@@ -1,7 +1,7 @@
 package com.grpc.services;
 
 
-import com.grpc.entities.UserInfo;
+import com.grpc.entities.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +15,7 @@ public class UserInfoService {
     private GrpcService grpcServ;
 
     @PostMapping(value = "/userinfo",consumes =  MediaType.APPLICATION_JSON_VALUE)
-    public UserInfo updateUserInfo(@RequestBody() UserInfo uinfo){
+    public UserEntity updateUserInfo(@RequestBody() UserEntity uinfo){
         return grpcServ.sendMessage(uinfo);
     }
 }

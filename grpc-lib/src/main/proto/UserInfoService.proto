@@ -2,11 +2,11 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "com.grpc.lib";
-option java_outer_classname = "UserInfoStub";
+option java_outer_classname = "UserInfo";
 
 package grpclib;
 // The user info service definition.
-service UserService {
+service UserInfoService {
     // Sends a update
     rpc SendUpdate (UserInfoUpdateRequest) returns (UserInfoUpdateResponse) {
     }
