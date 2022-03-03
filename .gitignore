@@ -19,6 +19,15 @@ target/
 *.iml
 *.ipr
 
+### Gradle
+.gradle
+
+### GPRC generated
+**.pb.*
+
+### C/C++
+*.o
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
