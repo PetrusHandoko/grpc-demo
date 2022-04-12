@@ -3,7 +3,7 @@
  */
 
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
 }
 
@@ -24,9 +24,19 @@ dependencies {
     implementation 'org.apache.tomcat.embed:tomcat-embed-core:8.5.15'
 }
 
-group = 'grpc-lib'
-version = '1.0-SNAPSHOT'
-description = 'grpc-lib'
+def group = 'grpc-lib'
+def version = '1.0-SNAPSHOT'
+def description = 'grpc-lib'
+
+def sourceDirectory = 'src/main/proto'
+def grpcSrcName = "$group-$version-src.tgz"
+
+tasks.register('packageProtoSrc', Tar){
+    archiveFileName = grpcSrcName
+    from sourceDirectory
+
+}
+
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 publishing {

@@ -19,7 +19,7 @@ dependencies {
     implementation 'net.devh:grpc-spring-boot-starter:2.13.0.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.6.1'
     implementation 'io.grpc:grpc-stub:1.42.1'
-    implementation 'grpc-lib:grpc-lib:1.0-SNAPSHOT'
+    implementation project ('grpc-lib')
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.1'
     compileOnly 'org.projectlombok:lombok:1.18.22'
 }

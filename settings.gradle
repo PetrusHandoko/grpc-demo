@@ -3,3 +3,4 @@
  */
 
 rootProject.name = 'grpc'
+include 'grpc-lib'
